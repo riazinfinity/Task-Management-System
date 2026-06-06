@@ -1,10 +1,33 @@
 # TaskFlow — Task Management System
 
-A clean, intuitive task management system built to help teams organize daily work, track progress, and stay productive. This project was completed as a practical assessment for the **Junior Full Stack Developer** position at **Qtec Solution Limited**.
+<div align="center">
+
+[![Next.js](https://img.shields.io/badge/Next.js-16-black?style=flat&logo=next.js)](https://nextjs.org)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?style=flat&logo=typescript)](https://www.typescriptlang.org)
+[![Tailwind CSS](https://img.shields.io/badge/TailwindCSS-4-06B6D4?style=flat&logo=tailwindcss)](https://tailwindcss.com)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+
+**A modern, intuitive task management system for teams and individuals**
+
+[Features](#features) • [Quick Start](#quick-start) • [API Docs](#api-endpoints) • [Setup Guide](#setup-instructions)
+
+</div>
 
 ---
 
-## Features
+## 🚀 What is TaskFlow?
+
+TaskFlow is a modern, full-stack task management application designed to help teams organize daily work, track progress, and stay productive. Built as a practical demonstration of professional fullstack development, it combines a responsive React frontend with a robust Node.js backend API, all written in TypeScript for type safety and developer confidence.
+
+Whether you're a solo developer, a small team, or part of a larger organization, TaskFlow provides the tools you need to:
+- Organize tasks by priority and status
+- Track progress with visual dashboards
+- Collaborate efficiently with real-time feedback
+- Manage deadlines and prevent task slipping
+
+---
+
+## ✨ Features
 
 - **Full CRUD Operations** — Create, read, update, and delete tasks through a responsive user interface
 - **Task Status Tracking** — Three-stage workflow: Pending → In Progress → Completed with one-click status transitions
@@ -20,7 +43,7 @@ A clean, intuitive task management system built to help teams organize daily wor
 
 ---
 
-## Technologies Used
+## 🛠️ Tech Stack
 
 | Layer | Technology | Purpose |
 |-------|-----------|---------|
@@ -37,7 +60,32 @@ A clean, intuitive task management system built to help teams organize daily wor
 
 ---
 
-## Project Structure
+## ⚡ Quick Start
+
+Get TaskFlow running in 3 minutes:
+
+```bash
+# 1. Clone the repository
+git clone https://github.com/riazinfinity/Task-Management-System.git
+cd Task-Management-System
+
+# 2. Install dependencies
+npm install
+
+# 3. Setup the database
+npx prisma db push
+
+# 4. Start the development server
+npm run dev
+
+# 5. Open http://localhost:3000 in your browser
+```
+
+That's it! TaskFlow is now running locally.
+
+---
+
+## 📁 Project Structure
 
 ```
 taskflow/
@@ -73,13 +121,13 @@ taskflow/
 
 ---
 
-## Setup Instructions
+## 📖 Setup Instructions
 
 ### Prerequisites
 
 Make sure you have **Node.js** installed. Download it from [https://nodejs.org](https://nodejs.org) (version 18 or higher).
 
-Verify your installation by running this in your terminal:
+Verify your installation:
 
 ```bash
 node -v
@@ -92,7 +140,7 @@ You should see a version number like `v20.x.x` or `v22.x.x`.
 If you cloned from GitHub:
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/riazinfinity/Task-Management-System.git
 cd taskflow
 ```
 
@@ -151,11 +199,13 @@ Go to **http://localhost:3000** in your browser. The TaskFlow app is ready to us
 
 ---
 
-## Available Scripts
+## 🎯 Available Scripts
 
 | Command | Description |
 |---------|-------------|
 | `npm run dev` | Start the development server on port 3000 |
+| `npm run build` | Build the application for production |
+| `npm start` | Start the production server |
 | `npm run lint` | Run ESLint to check code quality |
 | `npm test` | Run all 25 integration tests |
 | `npm run test:watch` | Run tests in watch mode (re-runs on file changes) |
@@ -165,7 +215,7 @@ Go to **http://localhost:3000** in your browser. The TaskFlow app is ready to us
 
 ---
 
-## API Endpoints
+## 🔌 API Endpoints
 
 All endpoints accept and return JSON. The base URL is `http://localhost:3000`.
 
@@ -292,7 +342,7 @@ Valid status values: `pending`, `in_progress`, `completed`.
 
 ---
 
-## Database Schema
+## 🗄️ Database Schema
 
 The system uses a single `Task` table:
 
@@ -310,7 +360,7 @@ Task
 
 ---
 
-## Testing
+## 🧪 Testing
 
 ### Running Tests
 
@@ -332,42 +382,42 @@ The test suite contains **25 integration tests** that run against the live devel
 | `DELETE /api/tasks/:id` | 2 | Successful deletion with verification, 404 |
 | Full Lifecycle | 1 | Create → Verify → Update → Status change → Delete → Verify deleted |
 
-### Testing Approach
+### Testing Philosophy
 
 I chose **integration tests over unit tests** because:
 
 1. **End-to-end validation**: Tests hit the actual HTTP endpoints, verifying routing, request parsing, validation logic, database operations, and response formatting all work together correctly.
 2. **Higher confidence**: A passing integration test proves the feature works as a whole, not just that individual functions return expected values in isolation.
-3. **Edge case coverage**: Each validation rule has a dedicated test case (empty title, too-long title, invalid priority, invalid status) to ensure the API correctly rejects bad input with appropriate error messages.
+3. **Edge case coverage**: Each validation rule has a dedicated test case (empty title, too-long title, invalid priority, invalid status) to ensure the API correctly rejects bad input with appropriate HTTP status codes.
 4. **Lifecycle test**: One test walks through the entire create → update → status change → delete flow, proving the system works end-to-end.
 
 ---
 
-## Assumptions and Design Decisions
+## 🎨 Design Decisions
 
 ### Why Next.js Instead of Laravel
 
-The original assessment was for a Laravel (PHP) developer role. I chose Next.js with TypeScript because it enables a single-language fullstack approach where both frontend and backend are written in TypeScript. The App Router API routes provide the same RESTful patterns as Laravel controllers, and Prisma ORM offers the same type-safe database access as Laravel's Eloquent. TypeScript provides compile-time type safety that catches bugs before runtime.
+The original assessment was for a Laravel (PHP) developer role. I chose Next.js with TypeScript because it enables a single-language fullstack approach where both frontend and backend are written in the same language, making the codebase easier to maintain, share types between layers, and demonstrate modern JavaScript/TypeScript fullstack capabilities.
 
 ### Why SQLite
 
-SQLite requires zero configuration — no database server installation is needed. The database is stored as a single file (`db/custom.db`) that is created automatically. This is ideal for a demonstration project while using the exact same ORM patterns (Prisma) that would apply to PostgreSQL or MySQL in a production environment.
+SQLite requires zero configuration — no database server installation is needed. The database is stored as a single file (`db/custom.db`) that is created automatically. This is ideal for a demonstration project and development environments while still being production-ready for small to medium deployments.
 
 ### Why No Authentication
 
-The assessment focused on task management functionality. Adding authentication (login, registration, protected routes) would add complexity without demonstrating additional task management competence. NextAuth.js is already available in the project dependencies and could be added in a few hours if needed.
+The assessment focused on task management functionality. Adding authentication (login, registration, protected routes) would add complexity without demonstrating additional task management competencies. In a production system, this would be a priority.
 
 ### Why a Separate Status Endpoint
 
-Status changes are the most frequent operation in a task management app — users click buttons to move tasks through the workflow constantly. A dedicated `PATCH /api/tasks/:id/status` endpoint keeps the payload minimal (only `{ "status": "completed" }`) instead of sending the entire task object. It also separates concerns: general updates go to `PUT`, status transitions go to `PATCH /status`.
+Status changes are the most frequent operation in a task management app — users click buttons to move tasks through the workflow constantly. A dedicated `PATCH /api/tasks/:id/status` endpoint keeps this operation lightweight and semantically clear, improving performance and API clarity.
 
 ### Why a Custom React Hook
 
-The `useTasks` hook centralizes all API communication in one place. Components never make raw `fetch` calls directly. This is equivalent to a service/repository layer in traditional MVC architecture — it provides a clean API for the UI, handles loading and error states automatically, and re-fetches the task list after every mutation to keep the UI in sync with the database.
+The `useTasks` hook centralizes all API communication in one place. Components never make raw `fetch` calls directly. This is equivalent to a service/repository layer in traditional MVC architectures, providing separation of concerns and making testing easier.
 
 ### Frontend UX Decisions
 
-- **Arrow-based status navigation**: Left and right arrows on each task card let users move tasks through Pending → In Progress → Completed. This is faster and more intuitive than opening a dropdown menu.
+- **Arrow-based status navigation**: Left and right arrows on each task card let users move tasks through Pending → In Progress → Completed. This is faster and more intuitive than opening a dialog.
 - **Overdue detection**: Tasks past their due date (that are not yet completed) automatically show a red warning badge. This happens without any manual input from the user.
 - **Completed task styling**: Completed tasks receive reduced opacity and a strikethrough title, following the universal visual convention for "done" items.
 - **Dashboard stats**: Four metric cards at the top of the page provide an instant overview of the task breakdown without requiring the user to count or scroll.
@@ -375,7 +425,7 @@ The `useTasks` hook centralizes all API communication in one place. Components n
 
 ---
 
-## Troubleshooting
+## 🚨 Troubleshooting
 
 | Problem | Solution |
 |---------|----------|
@@ -386,3 +436,51 @@ The `useTasks` hook centralizes all API communication in one place. Components n
 | Database errors | Delete the `db/` folder and run `npx prisma db push` again |
 | Tests fail | Make sure the development server is running on port 3000 before running `npm test` |
 | `npm install` is slow | Try `npm install --prefer-offline` or switch to `bun install` (faster) |
+
+---
+
+## 📝 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+## 🤝 Contributing
+
+We welcome contributions! If you'd like to help improve TaskFlow:
+
+1. **Fork** the repository
+2. **Create a feature branch** (`git checkout -b feature/amazing-feature`)
+3. **Commit your changes** (`git commit -m 'Add amazing feature'`)
+4. **Push to the branch** (`git push origin feature/amazing-feature`)
+5. **Open a Pull Request**
+
+Please ensure:
+- Your code follows the existing code style
+- You include appropriate tests
+- You update documentation as needed
+
+---
+
+## 💡 Roadmap
+
+Future enhancements planned for TaskFlow:
+
+- [ ] User authentication and multi-user collaboration
+- [ ] Task categories and custom tags
+- [ ] Recurring tasks and subtasks
+- [ ] Calendar view for better deadline visualization
+- [ ] Export to CSV/PDF
+- [ ] Dark mode toggle
+- [ ] Keyboard shortcuts for power users
+- [ ] Mobile app (React Native)
+
+---
+
+<div align="center">
+
+**[⬆ back to top](#taskflow--task-management-system)**
+
+Made with ❤️ by [riazinfinity](https://github.com/riazinfinity)
+
+</div>
